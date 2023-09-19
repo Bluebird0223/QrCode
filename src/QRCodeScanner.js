@@ -12,6 +12,7 @@ class QRScanner extends Component {
       this.setState({
         result: data,
       });
+      console.log(`Scanned QR code: ${data}`); // Log the scanned message
     }
   };
 
@@ -29,7 +30,7 @@ class QRScanner extends Component {
             onError={this.handleError}
             onScan={this.handleScan}
             style={{ width: '100%' }}
-            facingMode={'environment'} // Set to rear camera only
+            facingMode={this.state.facingMode}
           />
         </div>
         <p>{this.state.result}</p>
