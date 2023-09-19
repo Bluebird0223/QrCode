@@ -19,14 +19,6 @@ class QRScanner extends Component {
     console.error(error);
   };
 
-  toggleCamera = () => {
-    const newFacingMode =
-      this.state.facingMode === 'user' ? 'environment' : 'user';
-    this.setState({
-      facingMode: newFacingMode,
-    });
-  };
-
   render() {
     return (
       <div>
@@ -37,13 +29,10 @@ class QRScanner extends Component {
             onError={this.handleError}
             onScan={this.handleScan}
             style={{ width: '100%' }}
-            facingMode={this.state.facingMode}
+            facingMode={'environment'} // Set to rear camera only
           />
         </div>
         <p>{this.state.result}</p>
-        <button onClick={this.toggleCamera}>
-          Toggle Camera ({this.state.facingMode === 'user' ? 'Front' : 'Rear'})
-        </button>
       </div>
     );
   }
